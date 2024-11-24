@@ -27,4 +27,3 @@ pipeline {
       sh 'docker build -t rachana17/banking-project-demo:latest'
            }
        }
-   
