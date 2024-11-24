@@ -24,7 +24,18 @@ pipeline {
        }
   stage('Create Docker Image') {
     steps {
-      sh 'docker build -t
+      sh 'docker build -t rachana23/banking-project-demo:latest'
            }
        }
-                       
+    stage('Docker-login') {
+      steps{
+        withCredentials([usernamePassword(credentialsId: 'b109dda5-81ed-4a0c-b108-5ff291203989', passwordVariable: 'dockerpassword', usernameVariable: 'dockerlogin')]) {
+        sh 'Docker login -u ${dockerlogin} -p ${dockerpassword}'
+                            }
+                 }
+        }
+                       stage('push-image') {
+                          steps {
+                             sh 'docker push rachana23/banking-project-demo:latest'
+                                   }
+                              }
