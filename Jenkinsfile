@@ -18,7 +18,7 @@ pipeline {
        }
      }
     stage('generate Test Reports') {
-      steps
+      steps {
           publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reporDir: '/var/lib/jenkins/workspace/bankingproject/target/surefire-reports', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', UseWrapperFileDirectly: true])   
                }
        }
@@ -27,4 +27,5 @@ pipeline {
       sh 'docker build -t rachana17/banking-project-demo:latest'
            }
       }
+  }
 }
